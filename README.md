@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# leaflet-maps 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An Interactive Map using React and Leaflet
+
 
 ## Available Scripts
 
