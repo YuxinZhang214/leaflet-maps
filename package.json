@@ -38,5 +38,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://github.com/YuxinZhang214/leaflet-maps"
+  "homepage": "https://yuxinzhang214.github.io/leaflet-maps",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "gh-pages": "^6.1.1"
+  }
 }

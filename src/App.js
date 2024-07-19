@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './App.css';
+import "leaflet/dist/leaflet.css";
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon, divIcon, point } from "leaflet";
