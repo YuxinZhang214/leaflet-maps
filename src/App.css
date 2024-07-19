@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
 .App {
   height: 100vh;
   background-color: #282c34;
@@ -11,35 +17,25 @@
   color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title-description {
+  margin: 1.5em 1em 1.5em 1em;        /* top right bottom left */
 }
 
-.App-link {
-  color: #61dafb;
+.title-description h1 {
+  margin-bottom: 0.5em;          /* Adjust the space between the h1 and the following text */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0
+.title-description a {
+  color: #61dafb;             /* Link color */
+  text-decoration: underline;   /* Underline the link */
 }
 
 .leaflet-container {
   height: 90vh;
   width: 90%;
   border-radius: 2rem;
+  margin: 1em 1em 5em 1em;        /* top right bottom left */
+  border: 2px solid #fff;
 }
 
 .cluster-icon {

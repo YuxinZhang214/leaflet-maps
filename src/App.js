@@ -3,12 +3,11 @@ import React from 'react';
 import './App.css';
 import "leaflet/dist/leaflet.css";
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import { Icon, divIcon, point } from "leaflet";
 
 import MarkerClusterGroup from 'react-leaflet-cluster';
 
-// Custom Icon
 const customIcon = new Icon({
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
   iconSize: [38, 38]
@@ -24,6 +23,18 @@ const createClusterCustomIcon = function (cluster) {
 
 const App = () => {
   const position = [51.505, -0.09];
+
+  const handleMapClick = (e) => {
+    const { lat, lng } = e.latlng;
+    alert(`Clicked at: ${lat}, ${lng}`);
+  };
+
+  const MapEventsHandler = ({ handleMapClick }) => {
+    useMapEvents({
+      click: (e) => handleMapClick(e),
+    });
+    return null;
+  };
 
   const markers = [
     {
@@ -43,14 +54,22 @@ const App = () => {
   return (
     <div className="App">
 
-      <h1>React Leaflet Map</h1>
-    
+      <div className='title-description'>
+        <h1>React Leaflet Map</h1>
+        <p>
+          A quickly built Leaflet Map Playground based on{' '}
+          <a href="https://www.youtube.com/watch?v=jD6813wGdBA" target="_blank" rel="noopener noreferrer">
+              React Leaflet Tutorial
+          </a>
+        </p>
+      </div>
+
       <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="leaflet-container">
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
+         <MapEventsHandler handleMapClick={handleMapClick} />
         <MarkerClusterGroup chunkedLoading iconCreateFunction={createClusterCustomIcon}>
           {markers.map((marker, index) => (
             <Marker key={index} position={marker.geocode} icon={customIcon}>
@@ -59,9 +78,7 @@ const App = () => {
           ))}
         </MarkerClusterGroup>
       </MapContainer>
-
-      <p> A quickly built Leaflet Map Playground based on https://www.youtube.com/watch?v=jD6813wGdBA</p>
-
+   
     </div>
   );
 };
